@@ -1,10 +1,24 @@
 <h1>Editing Book </h1>
 <%= form_with model:@book, local:true do |f| %>
-  <h4>title</h4>
+  <h4>Title</h4>
   <%= f.text_field :title %>
   <h4>Body</h4>
   <%= f.text_area :body %>
+  <div class="editupdateBook">
   <%= f.submit'Update Book' %>
-  <a href="">show</a>
-  <a href="/books">back</a>
+  </div>
+   <% if @book.errors.any? %>
+        <div id="error_explanation" class="alert alert-danger">
+            <p>error</p>
+            <ul>
+              <% @book.errors.full_messages.each do |message| %>
+                <li><%= message %></li>
+              <% end %>
+            </ul>
+        </div>
+    <% end %>
+  </div class="edit-show"><%= link_to 'Show', book_path(@book.id) %></a>
+  </div>
+  <div class"edit-books"><a href="/books">back</a>
+  </div>
 <% end %>
